@@ -8,7 +8,7 @@ module.exports = function (pictures) {
   var el = yo`<div class="container timeline">
     <div class="row">
       <div class="col s12 m10 offset-m1 l8 offset-l2 center-align">
-        <a class="btn btn-flat btn-white cyan" href="#" onclick=${openbox}><i class="fa fa-paint-brush" aria-hidden="true"></i> Picto</a>
+        <a class="btn btn-flat btn-white cyan" href="#" onclick=${openbox}><i class="fa fa-paint-brush" aria-hidden="true"></i> pictobox</a>
         <div id="modaldraw" class="modal modal-fixed-footer modaldraw">
           <div class="modal-content center">
             <canvas id="paper" class="paper" width="500" height="500">
@@ -126,10 +126,12 @@ module.exports = function (pictures) {
     }, false);
 
     document.getElementById("pencil").addEventListener("click", function() {
+      ctx.lineWidth = 1;
       ctx.strokeStyle = "#000";
     }, false);
 
     document.getElementById("eraser").addEventListener("click", function() {
+      ctx.lineWidth = 5;
       ctx.strokeStyle = "#fff";
     }, false);
   }
