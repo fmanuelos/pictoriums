@@ -2,6 +2,10 @@
 
 Share your Picto Draws
 
+This application allows users to draw pictures and save or share them on the website. 
+
+This is the front-end of the application. It connects to the pictoriums-client to run. The main function is to draw pictures and send them to the back-end. 
+
 ## The MIT License (MIT)
 
 Copyright (c) 2016
