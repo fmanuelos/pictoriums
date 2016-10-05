@@ -12,9 +12,6 @@ var el = yo`<footer class="site-footer">
       </div>
       <div class="col s12 l3 push-l6 center-align">
         2016 Pictoriums<br>
-        <small>
-          ${translate.message('educational.only')}
-        </small>
       </div>
     </div>
   </div>

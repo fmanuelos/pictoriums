@@ -8,6 +8,12 @@ module.exports = function (pictures) {
   var el = yo`<div class="container timeline">
     <div class="row">
       <div class="col s12 m10 offset-m1 l8 offset-l2 center-align">
+        <form enctype="multipart/form-data" class="form-upload" id="formUpload">
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m10 offset-m1 l8 offset-l2 center-align">
         <a class="btn btn-flat btn-white cyan" href="#" onclick=${openbox}><i class="fa fa-paint-brush" aria-hidden="true"></i> pictobox</a>
         <div id="modaldraw" class="modal modal-fixed-footer modaldraw">
           <div class="modal-content center">
@@ -21,7 +27,7 @@ module.exports = function (pictures) {
                 <i class="fa fa-bars" aria-hidden="true"></i>
               </a>
               <ul>
-                <li><a class="btn-floating red" href="#" onclick=${cancel}><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+                <li><a class="btn-floating red" href="#" onclick=${close}><i class="fa fa-trash" aria-hidden="true"></i></a></li>
                 <li><a class="btn-floating blue" href="#" onclick=${uploadImage}><i class="fa fa-cloud-upload" aria-hidden="true"></i></a></li>
                 <li><a id="eraser" class="btn-floating yellow darken-1"><i class="fa fa-eraser" aria-hidden="true"></i></a></li>
                 <li><a id="pencil" class="btn-floating green"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
@@ -40,7 +46,7 @@ module.exports = function (pictures) {
     </div>
   </div>`;
 
-  function cancel() {
+  function close() {
     $('#modaldraw').closeModal();
     return false;
   }
@@ -48,7 +54,9 @@ module.exports = function (pictures) {
   function uploadImage() {
     var image = document.getElementById('paper').toDataURL('image/jpg');
     var blob = dataURItoBlob(image);
-    var data = new FormData();
+
+    var form = document.querySelector("form");
+    var data = new FormData(form);
     data.append("picture", blob);
 
     fetch('/api/pictures', {
